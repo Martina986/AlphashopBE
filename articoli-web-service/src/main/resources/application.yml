@@ -1,0 +1,65 @@
+server:
+  port: 5051
+spring:
+  application:
+    name: ProductWebService
+  datasource:
+    password: 123_Stella
+    url: jdbc:postgresql://localhost:5433/postgres
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+  messages:
+    basename: messages,message_it
+  sql:
+    init:
+      mode: always
+      platform: postgres
+
+#Configurazione user
+gestuser:
+ srvUrl : http://localhost:8019/api/utenti/cerca/userid/
+ userId : ReadUser
+ password : BimBumBam_2018
+
+
+sicurezza:
+    uri: /auth
+    refresh: /refresh
+    header: Authorization
+    prefix: Bearer
+    expiration: 86400
+    secret: 123_Stella
+
+#Opzioni Open Feign
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+
+logging:
+    level:
+      com:
+        xantrix:
+          webapp:
+            controller:
+              PriceClient: DEBUG
+              PromoClient: DEBUG
+
+

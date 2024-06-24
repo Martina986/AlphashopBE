@@ -1,0 +1,10 @@
+server:
+  port: 8019
+spring:
+  application:
+    name: GestUser
+  data:
+    mongodb:
+      uri: mongodb://localhost:27018/ms-users
+  messages:
+    basename: messages_it
